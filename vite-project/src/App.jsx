@@ -68,15 +68,16 @@ function App() {
         <div className="divider">
           <img className="divider-img" src={svgDividerDesktop} alt="divider" />
         </div>
-        <div className="dice">
-          {timeSecond <= 0 ? (
-            <button className="dice-btn" onClick={() => fetchAdvice()}>
-              <img src={svgDice} alt="dice" />
-            </button>
-          ) : (
+
+        {timeSecond <= 0 ? (
+          <button className="dice-btn dice" onClick={() => fetchAdvice()}>
+            <img src={svgDice} alt="dice" />
+          </button>
+        ) : (
+          <div className="dice">
             <p className="time-second">{timeSecond}</p>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

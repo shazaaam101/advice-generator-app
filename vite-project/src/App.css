@@ -28,6 +28,7 @@ img {
   display: grid;
   place-items: center;
   background-color: var(--neutral-dark-blue);
+  color: var(--primary-light-cyan);
 }
 
 .App .container {
@@ -47,10 +48,6 @@ img {
   color: var(--primary-neon-green);
   font-size: 1rem;
   letter-spacing: 3px;
-}
-
-.App .advice {
-  color: var(--primary-light-cyan);
 }
 
 .App .dice {
@@ -84,6 +81,7 @@ img {
 }
 
 .App .time-second {
+  color: var(--neutral-dark-blue);
   font-family: 'Manrope', sans-serif;
   font-size: var(--primary-fs);
   font-weight: var(--primary-fw);

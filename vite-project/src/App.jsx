@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 function App() {
   const [data, setData] = useState({});
   const [timeSecond, setTimeSecond] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   let isMount = true;
 
   const delayRandomAdvice = () => {
@@ -19,9 +20,11 @@ function App() {
 
   const fetchAdvice = async () => {
     setTimeSecond(2);
+    setIsLoading(true);
     //Note: Advice is cached for 2 seconds. Any repeat-request within 2 seconds will return the same piece of advice.
     const res = await fetch("https://api.adviceslip.com/advice");
     const { slip } = await res.json();
+    setIsLoading(false);
     setData(slip);
     delayRandomAdvice();
   };
@@ -53,8 +56,15 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <header className="id-advice">ADVICE&emsp;#{data?.id}</header>
-        <p className="advice">{data?.advice}</p>
+        {isLoading ? (
+          <p className="loading">Loading. . .</p>
+        ) : (
+          <>
+            <header className="id-advice">ADVICE&emsp;#{data?.id}</header>
+            <p className="advice">{data?.advice}</p>
+          </>
+        )}
+
         <div className="divider">
           <img className="divider-img" src={svgDividerDesktop} alt="divider" />
         </div>
